@@ -1,16 +1,17 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import { Chat } from "./index";
-import { IndeterminateCheckBox } from "@material-ui/icons";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: '36ch',
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
+const useStyles = makeStyles(() =>
+  createStyles({
+    "chats": {
+      height: "400px",
+      padding: "0",
+      overflow: "auto"
+    }
+  }),
+);
 
 const Chats = (props) => {
   const classes = useStyles();
@@ -21,7 +22,7 @@ const Chats = (props) => {
         return <Chat text={chat.text} type={chat.type} key={index.toString()} />
       })}
     </List>
-  )
-}
+  );
+};
 
-export default Chats
+export default Chats;
